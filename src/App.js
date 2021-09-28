@@ -1,23 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import Quizz from "./components/quizz";
+import questions from "./questions.json";
+import _ from "lodash";
 
 function App() {
+  const roundQuestions = _.take(questions, 10);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Quizz questions={roundQuestions} />
     </div>
   );
 }
