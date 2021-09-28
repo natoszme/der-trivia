@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import _ from "lodash";
 import Question from "./question";
 
-const Round = ({ questions }) => {
+export default function Round ({ questions, setPlayAgain }) {
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
   const [score, setScore] = useState(0);
+  //useEffect(moveToNext, [ currentQuestionNumber ]);
 
   const questionsCount = _.size(questions);
   const isActive = currentQuestionNumber < questionsCount;
@@ -15,25 +16,25 @@ const Round = ({ questions }) => {
     setCurrentQuestionNumber(currentQuestionNumber + 1)
   };
 
-  const Score = () => <p>{score}</p>;
+  const Score = () => <div>
+      <p>{score}</p>
+      <button onClick={setPlayAgain}>Jugar de nuevo</button>
+    </div>;
+
+  const Q = () => <Question
+    question={currentQuestion}
+    moveToNext={moveToNext}
+    questionCount={questionsCount}
+    currentQuestionNumber={currentQuestionNumber}
+  />
 
   return (
     <div>
       {
         isActive?
-          <Question
-            question={currentQuestion}
-            moveToNext={moveToNext}
-            questionCount={questionsCount}
-            currentQuestionNumber={currentQuestionNumber}
-          />
+          <Q />
         : <Score />
       }      
     </div>
   );
 };
-
-export default function Quiz({ questions }) {
-  const shuffledQuestions = _.shuffle(questions);
-  return <Round questions={shuffledQuestions}/>
-}

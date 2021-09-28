@@ -15,18 +15,22 @@ const Description = ({ question: { description }, answerIsOk }) => {
 const Option = ({ onOptionSelected, option }) =>
   <Button onClick={() => onOptionSelected(option)}>{option}</Button>
 
-const QuestionWithOptions = ({ question, options, moveToNext, currentQuestionNumber, questionCount }) => {
+const Question = ({ question, options, optionSelected }) =>
+  <div>
+    <h3>{question.text}</h3>
+    {options.map((option, number) => <Option key={number} question={question} option={option} onOptionSelected={optionSelected}/> )}
+  </div>
+
+const QuestionWithLearningInfo = ({ question, options, moveToNext, currentQuestionNumber, questionCount }) => {
   const [answered, setAnswered] = useState(false);
   const [answerIsOk, setAnswerIsOk] = useState(false);
 
   //TODO improve this?
   const descriptionRead = () => {
-    setAnswered(false);
-    setAnswerIsOk(false);
     moveToNext(answerIsOk);
   };
 
-  const { text, answer } = question;
+  const { answer } = question;
 
   const optionSelected = option => {
     if (answered) return;
@@ -52,8 +56,7 @@ const QuestionWithOptions = ({ question, options, moveToNext, currentQuestionNum
 
   return (
     <div>
-      <h3>{text}</h3>
-      {options.map((option, number) => <Option key={number} question={question} option={option} onOptionSelected={optionSelected}/> )}
+      <Question question={question} options={options} optionSelected={optionSelected}/>
       <p>{currentQuestionNumber + 1} / {questionCount}</p>
 
       <DescriptionModal />
@@ -61,8 +64,8 @@ const QuestionWithOptions = ({ question, options, moveToNext, currentQuestionNum
   );
 }
 
-export default function Question(props) {
+export default function QuestionView(props) {
   const { answer, incorrectAnswers } = props.question;
   const options = _(incorrectAnswers).concat(answer).shuffle().value();
-  return <QuestionWithOptions options={options} {...props}/>
+  return <QuestionWithLearningInfo options={options} {...props}/>
 }
