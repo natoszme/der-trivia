@@ -12,12 +12,21 @@ const Description = ({ question: { description }, answerIsOk }) => {
   );
 }
 
-export default function Question({ question, moveToNext }) {
+const Option = ({ onOptionSelected, option }) =>
+  <Button onClick={() => onOptionSelected(option)}>{option}</Button>
+
+const QuestionWithOptions = ({ question, options, moveToNext, currentQuestionNumber, questionCount }) => {
   const [answered, setAnswered] = useState(false);
   const [answerIsOk, setAnswerIsOk] = useState(false);
-  
-  const { text, answer, incorrectAnswers } = question;
-  const options = _(incorrectAnswers).concat(answer).shuffle().value();
+
+  //TODO improve this?
+  const descriptionRead = () => {
+    setAnswered(false);
+    setAnswerIsOk(false);
+    moveToNext(answerIsOk);
+  };
+
+  const { text, answer } = question;
 
   const optionSelected = option => {
     if (answered) return;
@@ -27,7 +36,7 @@ export default function Question({ question, moveToNext }) {
   };
 
   const DescriptionModal = () =>
-    <Modal show={answered} onHide={moveToNext}>
+    <Modal show={answered} onHide={descriptionRead}>
       <Modal.Header closeButton>
         <Modal.Title>Modal heading</Modal.Title>
       </Modal.Header>
@@ -35,7 +44,7 @@ export default function Question({ question, moveToNext }) {
         <Description question={question} answerIsOk={answerIsOk}/>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={moveToNext}>
+        <Button variant="secondary" onClick={descriptionRead}>
           Close
         </Button>
       </Modal.Footer>
@@ -44,11 +53,16 @@ export default function Question({ question, moveToNext }) {
   return (
     <div>
       <h3>{text}</h3>
-      {options.map((option, number) => <Option key={number} question={question} option={option} optionSelected={optionSelected}/> )}
+      {options.map((option, number) => <Option key={number} question={question} option={option} onOptionSelected={optionSelected}/> )}
+      <p>{currentQuestionNumber + 1} / {questionCount}</p>
+
       <DescriptionModal />
     </div>
   );
 }
 
-const Option = ({ optionSelected, option }) =>
-  <Button onClick={() => optionSelected(option)}>{option}</Button>
+export default function Question(props) {
+  const { answer, incorrectAnswers } = props.question;
+  const options = _(incorrectAnswers).concat(answer).shuffle().value();
+  return <QuestionWithOptions options={options} {...props}/>
+}
