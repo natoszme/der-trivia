@@ -1390,9 +1390,17 @@ const questions = [
 ];
 
 const formattedQuestion = ({ "Tema": topic, "Pregunta": text, "Respuesta correcta": answer,
-    "Respuesta incorrecta 1": firstIncorrect, "Respuesta incorrecta 2": secondIncorrect, "Descripción": description }) => (
-  { topic, text, description, answer, incorrectAnswers: [ firstIncorrect, secondIncorrect ] }
-);
+    "Respuesta incorrecta 1": firstIncorrect, "Respuesta incorrecta 2": secondIncorrect, "Descripción": description }) => {
+
+  const toAnswer = _.toString;
+  return {
+    topic,
+    text,
+    description,
+    answer: toAnswer(answer),
+    incorrectAnswers: _.map([ firstIncorrect, secondIncorrect ], toAnswer)
+  }
+};
 
 const isValid = ({ text, answer, incorrectAnswers }) => {
   const hasIncorrectAnswers = !_(incorrectAnswers).compact().isEmpty();

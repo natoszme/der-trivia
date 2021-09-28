@@ -9,22 +9,25 @@ export default function Quizz({ questions }) {
 
   const questionsCount = _.size(shuffledQuestions);
 
-  const optionSelected = isCorrect => {
+  const moveToNext = isCorrect => {
     if (isCorrect) setScore(score + 1);
     setCurrentQuestion(currentQuestion + 1)
   };
 
   const Score = () => <p>{score}</p>;
+  const QuestionPage = props => (
+    <div>
+      <Question {...props} />
+      <p>{currentQuestion + 1} / {questionsCount}</p>
+    </div>
+  );
 
   return (
     <div>
       {
-        questionsCount == currentQuestion?
-          <Score score />
-        : <div>
-            <Question question={shuffledQuestions[currentQuestion]} onOptionSelected={optionSelected} />
-            <p>{currentQuestion + 1} / {questionsCount}</p>
-          </div>
+        questionsCount != currentQuestion?
+          <QuestionPage question={shuffledQuestions[currentQuestion]} moveToNext={moveToNext}/>
+        : <Score score />
       }      
     </div>
   );
