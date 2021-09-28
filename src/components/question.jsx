@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import _ from "lodash";
+import { Modal, Button } from "react-bootstrap";
+import '../App.css';
 
-const Description = ({ question: { description }, answerIsOk, onDescriptionRead }) => {
+const Description = ({ question: { description }, answerIsOk }) => {
   return (
     <div>
       <p>{description}</p>
       <p>{answerIsOk? "Ok" : "Not ok"}</p>
-      <button onClick={onDescriptionRead}>Ok</button>
     </div>
   );
 }
@@ -19,24 +20,35 @@ export default function Question({ question, moveToNext }) {
   const options = _(incorrectAnswers).concat(answer).shuffle().value();
 
   const optionSelected = option => {
+    if (answered) return;
     const isCorrect = _.isEqual(answer, option);
     setAnswered(true);
     setAnswerIsOk(isCorrect);
   };
 
+  const DescriptionModal = () =>
+    <Modal show={answered} onHide={moveToNext}>
+      <Modal.Header closeButton>
+        <Modal.Title>Modal heading</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Description question={question} answerIsOk={answerIsOk}/>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={moveToNext}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+
   return (
     <div>
-      {
-        !answered?
-          <div>
-            <h3>{text}</h3>
-            {options.map((option, number) => <Option key={number} question={question} option={option} optionSelected={optionSelected}/> )}
-          </div>
-        : <Description question={question} onDescriptionRead={moveToNext} answerIsOk={answerIsOk}/>
-      }
+      <h3>{text}</h3>
+      {options.map((option, number) => <Option key={number} question={question} option={option} optionSelected={optionSelected}/> )}
+      <DescriptionModal />
     </div>
   );
 }
 
 const Option = ({ optionSelected, option }) =>
-  <button onClick={() => optionSelected(option)}>{option}</button>
+  <Button onClick={() => optionSelected(option)}>{option}</Button>

@@ -25,7 +25,7 @@ export default function Quizz({ questions }) {
   return (
     <div>
       {
-        questionsCount != currentQuestion?
+        currentQuestion < questionsCount?
           <QuestionPage question={shuffledQuestions[currentQuestion]} moveToNext={moveToNext}/>
         : <Score score />
       }      
