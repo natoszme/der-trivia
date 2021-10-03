@@ -5,12 +5,11 @@ import Question from "./question";
 export default function Round ({ questions, setPlayAgain }) {
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
   const [score, setScore] = useState(0);
-  //useEffect(moveToNext, [ currentQuestionNumber ]);
-
+  
   const questionsCount = _.size(questions);
   const isActive = currentQuestionNumber < questionsCount;
   const currentQuestion = questions[currentQuestionNumber];
-
+  
   const moveToNext = isCorrect => {
     if (isCorrect) setScore(score + 1);
     setCurrentQuestionNumber(currentQuestionNumber + 1)
