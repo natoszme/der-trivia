@@ -6,9 +6,9 @@ import config from "../config";
 import questionPool from "../questions.json";
 
 export default function Round({ setPlayAgain }) {
+  const [questions, setQuestions] = useState([]);
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
   const [score, setScore] = useState(0);
-  const [questions, setQuestions] = useState([]);
   useEffect(() => {
     const roundQuestions = _.sampleSize(questionPool, config.questionsPerRound);
     setQuestions(roundQuestions);

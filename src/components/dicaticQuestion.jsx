@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import _ from "lodash";
 import '../App.css';
 import Question from "./question";
-import DescriptionModal from "./descriptionModal";
+import DidacticModal from "./didacticModal";
+import Topic from "./topic";
 
 export default function DidacticQuestion({ question, moveToNext, currentQuestionNumber, questionCount }) {
   const [answered, setAnswered] = useState(false);
@@ -22,16 +23,18 @@ export default function DidacticQuestion({ question, moveToNext, currentQuestion
     setAnswerIsOk(isCorrect);
   };
 
+  const Progress = () => <p>{currentQuestionNumber + 1} / {questionCount}</p>;
+
   return (
     <div>
+      <Topic question={question}/>
       <Question question={question} options={options} onOptionSelected={onOptionSelected}/>
-      <p>{currentQuestionNumber + 1} / {questionCount}</p>
-
-      <DescriptionModal
-        descriptionRead={() => moveToNext(answerIsOk)}
+      <Progress />
+      <DidacticModal
+        show={answered}
         question={question}
-        answered={answered}
         answerIsOk={answerIsOk}
+        descriptionRead={() => moveToNext(answerIsOk)}
       />
     </div>
   );

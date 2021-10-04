@@ -10,17 +10,17 @@ const Description = ({ question: { description }, answerIsOk }) => {
   );
 }
 
-export default ({ question, answered, answerIsOk, descriptionRead }) => (
-  <Modal show={answered} onHide={descriptionRead}>
-    <Modal.Header closeButton>
-      <Modal.Title>Modal heading</Modal.Title>
+export default ({ question, show, answerIsOk, descriptionRead }) => (
+  <Modal show={show} onHide={descriptionRead}>
+    <Modal.Header>
+      <Modal.Title>{question.topic}</Modal.Title>
     </Modal.Header>
     <Modal.Body>
       <Description question={question} answerIsOk={answerIsOk}/>
     </Modal.Body>
     <Modal.Footer>
       <Button variant="secondary" onClick={descriptionRead}>
-        Close
+        Cerrar
       </Button>
     </Modal.Footer>
   </Modal>
