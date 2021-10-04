@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import "./index.css";
 
 const Option = ({ onOptionSelected, option }) =>
-  <Button className="option" onClick={() => onOptionSelected(option)}>{_.toUpper(option)}</Button>
+  <Button className="btn btn-dark option" onClick={() => onOptionSelected(option)}>{_.toUpper(option)}</Button>
 
 export default ({ question, options, onOptionSelected }) => (
   <div>

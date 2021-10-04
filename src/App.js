@@ -31,7 +31,7 @@ function App() {
 
   const Step = _.get(steps, currentStep);
 
-  return <div className="App">
+  return <div className="App col-md-4 col-xs-12">
       <Step />
   </div>;
 }
