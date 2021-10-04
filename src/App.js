@@ -2,6 +2,7 @@ import Round from "./components/round";
 import _ from "lodash";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
+import Logo from "./components/logo";
 
 const Landing = ({ follow }) => <div>
   <p>Merre</p>
@@ -9,6 +10,7 @@ const Landing = ({ follow }) => <div>
 </div>
 
 const Topics = ({ follow }) => <div>
+  <Logo />
   <p>Estos son los temas</p>
   <button onClick={follow}>Next</button>
 </div>;

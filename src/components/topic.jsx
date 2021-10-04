@@ -1,3 +1,3 @@
 import React from "react";
 
-export default ({ question: { topic } }) => <p>{topic}</p>
+export default ({ topic }) => <p>{topic}</p>
