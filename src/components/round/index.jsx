@@ -13,6 +13,8 @@ export default function Round({ setPlayAgain }) {
     const roundQuestions = _.sampleSize(questionPool, config.questionsPerRound);
     setQuestions(roundQuestions);
   }, []);
+
+  if (_.isEmpty(questions)) return null;
   
   const moveToNext = isCorrect => {
     if (isCorrect) setScore(score + 1);
