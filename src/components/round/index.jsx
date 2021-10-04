@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import _ from "lodash";
-import DicaticQuestion from "./dicaticQuestion";
-import Score from "./score";
-import config from "../config";
-import questionPool from "../questions.json";
+import DicaticQuestion from "../didacticQuestion";
+import Score from "../score";
+import config from "../../config";
+import questionPool from "../../questions.json";
 
 export default function Round({ setPlayAgain }) {
   const [questions, setQuestions] = useState([]);

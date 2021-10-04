@@ -3,6 +3,7 @@ import _ from "lodash";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import Logo from "./components/logo";
+import "./App.css"
 
 const Landing = ({ follow }) => <div>
   <p>Merre</p>

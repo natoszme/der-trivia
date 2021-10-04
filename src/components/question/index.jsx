@@ -1,12 +1,14 @@
+import _ from "lodash";
 import React from "react";
 import { Button } from "react-bootstrap";
+import "./index.css";
 
 const Option = ({ onOptionSelected, option }) =>
-  <Button onClick={() => onOptionSelected(option)}>{option}</Button>
+  <Button className="option" onClick={() => onOptionSelected(option)}>{_.toUpper(option)}</Button>
 
 export default ({ question, options, onOptionSelected }) => (
   <div>
-    <h3>{question.text}</h3>
+    <p>{question.text}</p>
     {options.map((option, number) =>
       <Option
         key={number}

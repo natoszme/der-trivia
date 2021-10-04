@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import _ from "lodash";
-import '../App.css';
-import Question from "./question";
-import DidacticModal from "./didacticModal";
-import Topic from "./topic";
-import Logo from "./logo";
+import '../../App.css';
+import Question from "../question";
+import DidacticModal from "../didacticModal";
+import Topic from "../topic";
+import Logo from "../logo";
+import "./index.css";
 
 export default function DidacticQuestion({ question, moveToNext, currentQuestionNumber, questionCount }) {
   const [answered, setAnswered] = useState(false);
