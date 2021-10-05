@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/der-trivia/static/css/main.a617e044.chunk.css",
-    "main.js": "/der-trivia/static/js/main.220fb075.chunk.js",
-    "main.js.map": "/der-trivia/static/js/main.220fb075.chunk.js.map",
-    "runtime-main.js": "/der-trivia/static/js/runtime-main.4d0c2bca.js",
-    "runtime-main.js.map": "/der-trivia/static/js/runtime-main.4d0c2bca.js.map",
-    "static/css/2.f2512455.chunk.css": "/der-trivia/static/css/2.f2512455.chunk.css",
-    "static/js/2.8353e600.chunk.js": "/der-trivia/static/js/2.8353e600.chunk.js",
-    "static/js/2.8353e600.chunk.js.map": "/der-trivia/static/js/2.8353e600.chunk.js.map",
-    "static/js/3.8e37c8c4.chunk.js": "/der-trivia/static/js/3.8e37c8c4.chunk.js",
-    "static/js/3.8e37c8c4.chunk.js.map": "/der-trivia/static/js/3.8e37c8c4.chunk.js.map",
-    "index.html": "/der-trivia/index.html",
-    "static/css/2.f2512455.chunk.css.map": "/der-trivia/static/css/2.f2512455.chunk.css.map",
-    "static/css/main.a617e044.chunk.css.map": "/der-trivia/static/css/main.a617e044.chunk.css.map",
-    "static/js/2.8353e600.chunk.js.LICENSE.txt": "/der-trivia/static/js/2.8353e600.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/der-trivia/static/media/logo.6ce24c58.svg"
+    "main.css": "/merepresenta-trivia/static/css/main.b130c962.chunk.css",
+    "main.js": "/merepresenta-trivia/static/js/main.34d51ecd.chunk.js",
+    "main.js.map": "/merepresenta-trivia/static/js/main.34d51ecd.chunk.js.map",
+    "runtime-main.js": "/merepresenta-trivia/static/js/runtime-main.ff572f1e.js",
+    "runtime-main.js.map": "/merepresenta-trivia/static/js/runtime-main.ff572f1e.js.map",
+    "static/css/2.f2512455.chunk.css": "/merepresenta-trivia/static/css/2.f2512455.chunk.css",
+    "static/js/2.79bb5e69.chunk.js": "/merepresenta-trivia/static/js/2.79bb5e69.chunk.js",
+    "static/js/2.79bb5e69.chunk.js.map": "/merepresenta-trivia/static/js/2.79bb5e69.chunk.js.map",
+    "static/js/3.69f54f13.chunk.js": "/merepresenta-trivia/static/js/3.69f54f13.chunk.js",
+    "static/js/3.69f54f13.chunk.js.map": "/merepresenta-trivia/static/js/3.69f54f13.chunk.js.map",
+    "index.html": "/merepresenta-trivia/index.html",
+    "static/css/2.f2512455.chunk.css.map": "/merepresenta-trivia/static/css/2.f2512455.chunk.css.map",
+    "static/css/main.b130c962.chunk.css.map": "/merepresenta-trivia/static/css/main.b130c962.chunk.css.map",
+    "static/js/2.79bb5e69.chunk.js.LICENSE.txt": "/merepresenta-trivia/static/js/2.79bb5e69.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/merepresenta-trivia/static/media/Nippo.b2ac25be.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.4d0c2bca.js",
+    "static/js/runtime-main.ff572f1e.js",
     "static/css/2.f2512455.chunk.css",
-    "static/js/2.8353e600.chunk.js",
-    "static/css/main.a617e044.chunk.css",
-    "static/js/main.220fb075.chunk.js"
+    "static/js/2.79bb5e69.chunk.js",
+    "static/css/main.b130c962.chunk.css",
+    "static/js/main.34d51ecd.chunk.js"
   ]
 }
